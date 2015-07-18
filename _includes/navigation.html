@@ -1,0 +1,12 @@
+<nav class="main-nav">
+    {% if page.url != "/index.html" %}
+        <a href='{{ site.baseurl }}{{ page.about }}'> <span class="arrow">←</span> Início </a>
+    {% endif %}
+
+    {% if page.url != "/about/" %}
+        {% if site.aboutPage %}
+            <a href='{{ site.baseurl }}about'>Quem sou eu? </a>
+        {% endif %}
+    {% endif %}
+    <a class="cta" href="{{ site.baseurl }}feed.xml">Assine</a>
+</nav>
