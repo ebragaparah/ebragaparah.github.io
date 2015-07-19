@@ -165,11 +165,11 @@ a,
 #post-list li:hover .dates,
 #title:hover {
 	text-decoration: none;
-	color: #5badf0;
-	color: #5694f1;
+	color: #2ecc71;
+	color: #27ae60;
 }
 
-p a { color: #5694f1; }
+p a { color: #27ae60; }
 
 /*Transitions*/
 a,
@@ -417,9 +417,9 @@ Post List
 }
 
 #archive-link:hover {
-	background: #5694f1;
+	background: #27ae60;
 	color: #fff;
-	box-shadow: 0 0 0 1px #5694f1;
+	box-shadow: 0 0 0 1px #27ae60;
 }
 
 #archive-link span {
@@ -574,7 +574,7 @@ h2.month {
 }
 
 #archive-list li a:hover,#archive-list li:hover .dates {
-	color: #5694f1;
+	color: #27ae60;
 }
 
 #post-meta img.avatar {
@@ -595,7 +595,7 @@ h2.month {
 
 #post-list.archive.readmore a{
 	font: 400 16px/1.6 "Helvetica Neue",helvetica,Arial,sans-serif;
-	color: #5694f1;
+	color: #27ae60;
 }
 
 #post-list.archive.readmore a:hover{

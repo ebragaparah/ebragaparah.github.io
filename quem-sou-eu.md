@@ -1,6 +1,6 @@
 ---
-title: About
-permalink: about/
+title: Quem sou eu?
+permalink: quem-sou-eu/
 profile: true
 ---
 
