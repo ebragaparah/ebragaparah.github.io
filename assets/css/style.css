@@ -125,7 +125,7 @@ nav.main-nav a {
 	top: 8px;
 	right: 6px;
 	padding: 8px 12px;
-	color: #5badf0;
+	color: #27ae60;
 	font-size: 13px;
 	/*font-weight: bold;*/
 	line-height: 1.35;
@@ -133,7 +133,7 @@ nav.main-nav a {
 
 }
 nav.main-nav a.cta {
-	background: #5badf0;
+	background: #27ae60;
 	color: #fff;
 	margin-left: 12px;
 }
