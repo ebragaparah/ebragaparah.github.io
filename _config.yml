@@ -11,7 +11,6 @@ paginate: 20
 baseurl: /
 domain_name: 'http://yourblog-domain.com'
 google_analytics: 'UA-XXXXXXXX-X'
-disqus: true
 disqus_shortname: 'ebragaparah'
 
 # Details for the RSS feed generator
