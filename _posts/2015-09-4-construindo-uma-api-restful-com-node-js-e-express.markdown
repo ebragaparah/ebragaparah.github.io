@@ -17,12 +17,13 @@ $ brew install node
 ```
 Isso já vai instalar o Node e o [npm](https://www.npmjs.com), que é o nosso gerenciador de pacotes Node.
 
-Ou, se você estiver usando algum Linux com apt:
+Ou, se você estiver usando algum Linux com apt, pode adicionar a versão mais recente do Node adicionando o PPA e fazendo o procedimento padrão:
 
 ```
+$ curl -sL https://deb.nodesource.com/setup | sudo bash -
 $ sudo apt-get update
 $ sudo apt-get install nodejs
-$ sudo apt-get install npm
+$ sudo apt-get install build-essential
 ```
 
 Feito isso, vamos ao próximo passo, que é criar nossa estrutura de arquivos. A estrutura que estou usando funciona legal para mim, deixa as coisas um pouco organizadas e vai permitir que posteriormente possam ser adicionados diretórios de models, por exemplo. Crie um diretório que conterá o nosso projeto:
