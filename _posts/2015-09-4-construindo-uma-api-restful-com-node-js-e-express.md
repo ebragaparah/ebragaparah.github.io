@@ -1,7 +1,7 @@
 ---
 title:  "Construindo uma API RESTful usando Node.js e Express para servir outras aplicações"
-date:   2015-09-11 12:00:00
-description: Vamos criar uma API RESTful usando Node.js e Express de forma que sejamos capazes de servir outras aplicações. 
+date:   2015-09-14 12:05:00
+description: Vamos criar uma API RESTful usando Node.js e Express de forma que sejamos capazes de servir outras aplicações. A ideia é introduzir uma coisa simples, que pode ser estendida com outras aplicações posteriormente. 
 ---
 
 Oi, pessoal! Hoje eu vou mostrar como é fácil utilizar o Node.js para construir uma API para servir outras aplicações.
@@ -17,7 +17,7 @@ $ brew install node
 ```
 Isso já vai instalar o Node e o [npm](https://www.npmjs.com), que é o nosso gerenciador de pacotes Node.
 
-Ou, se você estiver usando Linux:
+Ou, se você estiver usando algum Linux com apt:
 
 ```
 $ sudo apt-get update
@@ -25,7 +25,7 @@ $ sudo apt-get install nodejs
 $ sudo apt-get install npm
 ```
 
-Feito isso, vamos ao próximo passo, que é criar nossa estrutura de arquivos. A estrutura que estou usando funciona legal para mim, deixa as coisas um pouco organizadas. Crie um diretório que conterá o nosso projeto:
+Feito isso, vamos ao próximo passo, que é criar nossa estrutura de arquivos. A estrutura que estou usando funciona legal para mim, deixa as coisas um pouco organizadas e vai permitir que posteriormente possam ser adicionados diretórios de models, por exemplo. Crie um diretório que conterá o nosso projeto:
 
 ```
 $ mkdir api_node
@@ -40,7 +40,7 @@ $ npm install --save body-parser
 $ npm init
 ```
 
-O comando npm init vai criar para nós um arquivo package.json, que servirá para listar nossas dependências neste projeto. Assim, quando compartilharmos este projeto, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas. 
+O comando npm init vai criar para nós um arquivo package.json, que servirá para listar e organizar nossas dependências neste projeto. Assim, quando ele for compartilhado, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas. 
 
 Crie um arquivo server.js, que servirá como nosso servidor e conterá todas as nossas definições de configurações e de rotas.
 
@@ -63,15 +63,13 @@ var router = express.Router();
 app.use(bodyParser.urlenconded({ extended: true });
 app.use(bodyParser.json());
 ```
-Aproveitando o ritmo de configurações, vamos adicionar a parte em que dizemos para a nossa aplicação em qual porta ela vai ficar escutando e um prefixo que diz qual será a porta de entrada da nossa API:
+Aproveitando o ritmo de configurações, vamos adicionar a parte em que dizemos para a nossa aplicação em qual porta ela vai ficar escutando e um prefixo que diz qual será a porta de entrada da nossa API, será a partir de onde iremos fazer nossas requisições:
 
 ```javascript
 app.use('/api', router);
 app.listen(port, function() {
   console.log('Insira cervejas na porta ' + port);
 });
-```
-```javascript
 ```
 
 Como não estamos usando nenhum banco de dados, vamos armazenar nossos dados como objetos Javascript.
@@ -84,7 +82,7 @@ var cervejas = [
 ];
 ```
 
-Seria legal também que criássemos um watcher para nos mostrar no terminal quando nossa aplicação mudou de estado, quando ocorreu alguma mudança, para isso, fazemos:
+Seria legal também que criássemos um watcher para nos mostrar no terminal quando nossa aplicação mudou de estado, quando ocorreu alguma mudança. Para isso, fazemos:
 
 ```javascript
 router.use(function(request, response, next) {
@@ -117,24 +115,24 @@ cervejasRoute.get(function(request, response) {
 });
 ```
 
-Apenas com esse bloco, já podemos visualizar algum json contendo todas as nossas cervejas. Eu usei o Postman para me auxiliar com essa tarefa, mas, você pode utilizar:
+Apenas com esse bloco, já podemos visualizar um json contendo todas as nossas cervejas. Eu usei o Postman para me auxiliar com essa tarefa, mas, você pode utilizar `curl` caso prefira.
 
 Ficamos livres então para rodar o nosso servidor e ver a mágica acontecendo.
 
 ```
-node server.js
+$ node server.js
 ```
 e, em outra aba do Terminal:
 
 ```
-curl -X GET http://localhost:3000/api/cervejas
+$ curl -X GET http://localhost:3000/api/cervejas
 ```
 
 Se você for utilizar o Postman, vai ser mais fácil, só precisa selecionar as opções de acordo com a sua vontade.
 
-Tudo funcionando? Que tal adicionar as outras actions da nossa API? Já temos **GET** e **POST** para nossa rota /cervejas, que tal se formos capazes de visualizar uma cerveja de cada vez?
+Tudo funcionando? Que tal adicionar as outras actions da nossa API? Já temos `GET` e `POST` para nossa rota /cervejas, que tal se formos capazes de visualizar uma cerveja de cada vez?
 
-Já temos uma rota definida para trazer uma cerveja para nós, basta que façamos uma action **GET** na nossa **cervejaRoute**, certo?
+Já temos uma rota definida para trazer uma cerveja para nós, lembra? Então basta que façamos uma action `GET` na nossa `cervejaRoute`, certo?
 
 ```javascript
 cervejaRoute.get(function(request, response) {
@@ -143,9 +141,9 @@ cervejaRoute.get(function(request, response) {
 });
 ```
 
-O que está acontecendo aqui é semelhante ao que ocorre no **GET** que fazemos com todas as cervejas, só que aqui precisamos capturar uma cerveja em específico, adicioná-la ao corpo da resposta e mandar renderizar como json.
+O que está acontecendo aqui é semelhante ao que ocorre no `GET` que fazemos com todas as cervejas, só que aqui precisamos capturar uma cerveja em específico, adicioná-la ao corpo da resposta e mandar renderizar como json.
 
-E para deletar uma cerveja? Fácil também. Usando a rota **cervejaRoute**, vamos chamar o método delete do express e passar como parâmetro a cerveja que desejamos deletar.
+E para deletar uma cerveja? Fácil também. Usando a rota `cervejaRoute`, vamos chamar o método delete do express e passar como parâmetro a cerveja que desejamos deletar.
 
 ```javascript
 cervejaRoute.delete(function(request, response) {
@@ -156,6 +154,6 @@ cervejaRoute.delete(function(request, response) {
 ```
 Agora já temos nossa API respondendo aos métodos GET, POST e DELETE.
 
-Bom, por hoje é isso. Em posts futuros eu pretendo falar um pouco mais detalhadamente e unir essa API com algo que possa consumir os dados dela. Persistir esses dados num banco seria interesante também.
+Bom, por hoje é isso. Em posts futuros eu pretendo falar um pouco mais detalhadamente e unir essa API com alguma aplicação que possa consumir os dados dela. Persistir esses dados num banco seria interesante também.
 
 Tendo qualquer problema, podem entrar em contato. Até já.
