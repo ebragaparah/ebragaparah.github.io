@@ -166,6 +166,18 @@ cervejaRoute.get(function(request, response) {
 
 O que está acontecendo aqui é semelhante ao que ocorre no `GET` que fazemos com todas as cervejas, só que aqui precisamos capturar uma cerveja em específico, adicioná-la ao corpo da resposta e mandar renderizar como json.
 
+Também seria interesante se nós pudéssemos editar uma cerveja existente, não é mesmo?
+Fácil também, basta que utilizemos o método PUT na nossa rota de edição de cerveja. Temos uma **editCervejaRoute**, ela serve exatamente para isso.
+
+```javascript
+editCervejaRoute.put(function(request, response) {
+  var cerveja = cervejas[request.params.id];
+
+  cerveja.nome = request.body.nome;
+  response.json({ message: "Cerveja alterada com sucesso", data: cerveja });
+});
+```
+
 E para deletar uma cerveja? Fácil também. Usando a rota `cervejaRoute`, vamos chamar o método delete do express e passar como parâmetro a cerveja que desejamos deletar.
 
 ```javascript
@@ -175,7 +187,7 @@ cervejaRoute.delete(function(request, response) {
   response.json(true);
 });
 ```
-Agora já temos nossa API respondendo aos métodos GET, POST e DELETE.
+Agora já temos nossa API respondendo aos métodos GET, POST, PUT e DELETE. Para que os métodos PUT e DELETE tenham soluções mais interessantes, seria legal implementar algum tratamento de exceções para o caso de buscar cervejas inexistentes ou coisa do tipo, não estou fazendo isso aqui.
 
 Bom, por hoje é isso. Em posts futuros eu pretendo falar um pouco mais detalhadamente e unir essa API com alguma aplicação que possa consumir os dados dela. Persistir esses dados num banco seria interesante também.
 
