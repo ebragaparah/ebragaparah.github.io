@@ -179,4 +179,6 @@ Agora já temos nossa API respondendo aos métodos GET, POST e DELETE.
 
 Bom, por hoje é isso. Em posts futuros eu pretendo falar um pouco mais detalhadamente e unir essa API com alguma aplicação que possa consumir os dados dela. Persistir esses dados num banco seria interesante também.
 
+Postei o código num repositório público, vocês podem olhar melhor como ele ficou. [Está aqui](https://github.com/ebragaparah/api_nodejs/blob/master/server.js)
+
 Tendo qualquer problema, podem entrar em contato. Até já.
