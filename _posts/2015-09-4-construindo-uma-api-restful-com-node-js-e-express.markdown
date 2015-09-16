@@ -1,7 +1,7 @@
 ---
 title:  "Construindo uma API RESTful usando Node.js e Express para servir outras aplicações"
 date:   2015-09-14 12:05:00
-description: Vamos criar uma API RESTful usando Node.js e Express de forma que sejamos capazes de servir outras aplicações. A ideia é introduzir uma coisa simples, que pode ser estendida com outras aplicações posteriormente. 
+description: Vamos criar uma API RESTful usando Node.js e Express de forma que sejamos capazes de servir outras aplicações. A ideia é introduzir uma coisa simples, que pode ser estendida com outras aplicações posteriormente.
 ---
 
 Oi, pessoal! Hoje eu vou mostrar como é fácil utilizar o Node.js para construir uma API para servir outras aplicações.
@@ -41,7 +41,7 @@ $ npm install --save body-parser
 $ npm init
 ```
 
-O comando npm init vai criar para nós um arquivo package.json, que servirá para listar e organizar nossas dependências neste projeto. Assim, quando ele for compartilhado, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas. 
+O comando npm init vai criar para nós um arquivo package.json, que servirá para listar e organizar nossas dependências neste projeto. Assim, quando ele for compartilhado, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas.
 
 Crie um arquivo server.js, que servirá como nosso servidor e conterá todas as nossas definições de configurações e de rotas.
 
@@ -112,11 +112,24 @@ Vamos então tratar de trazer todas as nossas cervejas:
 
 ```javascript
 cervejasRoute.get(function(request, response) {
-  send.json(cervejas);
+  response.json(cervejas);
 });
 ```
 
-Apenas com esse bloco, já podemos visualizar um json contendo todas as nossas cervejas. Eu usei o Postman para me auxiliar com essa tarefa, mas, você pode utilizar `curl` caso prefira.
+Apenas com esse bloco, já podemos visualizar um json contendo todas as nossas cervejas. Eu usei o [Postman](https://www.getpostman.com/) para me auxiliar com essa tarefa, mas, você pode utilizar `curl` caso prefira.
+
+Para postar uma cerveja, nós precisamos enviar uma action POST à nossa rota de cervejas e enviar os dados para que o objeto seja adicionado.
+
+```javascript
+cervejasRoute.post(function(request, response) {
+  var cerveja = {
+    nome: request.body.nome
+  };
+
+  cervejas.push(cerveja);
+  response.json(cerveja);
+});
+```
 
 Ficamos livres então para rodar o nosso servidor e ver a mágica acontecendo.
 
@@ -128,6 +141,15 @@ e, em outra aba do Terminal:
 ```
 $ curl -X GET http://localhost:3000/api/cervejas
 ```
+
+O comando acima deve te retornar todas as cervejas que temos até agora.
+
+
+```
+$ curl -X POST http://localhost:3000/api/cervejas -H "Content-Type: application/json"  -d '{"nome": "Cerveja5"}'
+```
+
+E este outro acima deve adicionar uma nova cerveja ao nosso conjunto de dados.
 
 Se você for utilizar o Postman, vai ser mais fácil, só precisa selecionar as opções de acordo com a sua vontade.
 
