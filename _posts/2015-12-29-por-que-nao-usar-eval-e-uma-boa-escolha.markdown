@@ -48,3 +48,5 @@ foo("var a = 2");
 A expressão que vem como parâmetro de **eval** declara uma variável **a**. Dentro da função foo ela não existe, porque o *strict-mode* limita essas alterações de escopo.
 
 Bastantes desenvolvedores Javascript aconselham que o uso de **eval** seja evitado, mesmo em *strict-mode*.
+
+Por hoje é isso, galera. Deixem comentários aí, bora conversar!
