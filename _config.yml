@@ -7,7 +7,7 @@ aboutPage: true
 markdown: redcarpet
 redcarpet:
   extensions: ["strikethrough"]
-highlighter: pygments
+highlighter: rouge
 
 gems: [jekyll-paginate]
 paginate: 5
