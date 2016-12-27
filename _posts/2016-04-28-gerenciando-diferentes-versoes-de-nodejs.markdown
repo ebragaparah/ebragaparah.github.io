@@ -29,12 +29,14 @@ $ nvm list
 Para desinstalar alguma versão o trabalho também é muito simples, o comando é
 
 ```
-nvm uninstall 5.0
+$ nvm uninstall 5.0
 ```
 
 Esses são os comandos mais usuais, eu não precisei de nenhum outro até agora. A documentação é simples e completa. Além disso, dá pra usar 
 
-```nvm help```
+```
+$ nvm help
+```
 
 caso você precise se lembrar de algum dos comandos e/ou descobrir outros.
 
