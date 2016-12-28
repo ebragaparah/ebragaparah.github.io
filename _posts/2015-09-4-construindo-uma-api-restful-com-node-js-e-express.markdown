@@ -36,12 +36,12 @@ E damos nosso primeiro passo, que é iniciar uma aplicação node dentro do noss
 
 ```
 $ cd api_node
+$ npm init
 $ npm install --save express
 $ npm install --save body-parser
-$ npm init
 ```
 
-O comando npm init vai criar para nós um arquivo package.json, que servirá para listar e organizar nossas dependências neste projeto. Assim, quando ele for compartilhado, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas.
+O comando npm init vai criar para nós um package.json, que servirá para listar e organizar nossas dependências neste projeto. Assim, quando ele for compartilhado, as pessoas não precisarão buscar cada uma das dependências manualmente, esse arquivo vai automatizar a instalação delas.
 
 Crie um arquivo server.js, que servirá como nosso servidor e conterá todas as nossas definições de configurações e de rotas.
 
