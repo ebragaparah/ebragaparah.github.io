@@ -29,7 +29,7 @@ Vamos observar melhor com um exemplo de código. Suponha que tenhamos a seguinte
     <div ng-controller="FourthCtrl as fourth">
       {{ fourth.data }}
       {{ fourth.msgFromSecondCtrl }}
-      <!-- nada acotece feijoada -->
+      <!-- emit do segundo controller nao chega aqui -->
     </div>
   </div>
 </div>
